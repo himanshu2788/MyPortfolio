@@ -51,3 +51,36 @@ sr.reveal('.skills-img', {delay: 400} )
 sr.reveal('.work-img', {interval: 200} )
 
 sr.reveal('.contact-input', {interval: 200} )
+
+
+
+
+const toggleBtn = document.getElementById("theme-toggle");
+const body = document.body;
+const starsContainer = document.getElementById("stars-container");
+
+// Generate stars for the night sky
+function generateStars(count = 100) {
+  starsContainer.innerHTML = '';
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random() * 3}s`;
+    star.style.width = `${Math.random() * 2 + 1}px`;
+    star.style.height = star.style.width;
+    starsContainer.appendChild(star);
+  }
+}
+
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    generateStars(150);
+  } else {
+    starsContainer.innerHTML = "";
+  }
+});
+
